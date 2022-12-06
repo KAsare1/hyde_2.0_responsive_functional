@@ -21,7 +21,7 @@ class _RegisterState extends State<Register> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Center(
-              child: Image.asset('HYDE_LOGO2.png'),
+              child: Image.asset('assets/HYDE_LOGO2.png'),
             ),
             const SizedBox(height: 2,),
             Container(

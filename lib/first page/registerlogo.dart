@@ -30,7 +30,7 @@ class _FirstregState extends State<Firstreg> {
              crossAxisAlignment: CrossAxisAlignment.center,
              children: [
                Center(
-                   child: Image.asset('HYDE_LOGO2.png')
+                   child: Image.asset('assets/HYDE_LOGO2.png')
                ),
          Container(
            margin: EdgeInsets.only(left: 10),

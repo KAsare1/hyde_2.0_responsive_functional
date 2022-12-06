@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "706460825859",
+    "project_id": "hyde-e3ccc",
+    "storage_bucket": "hyde-e3ccc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:706460825859:android:57cc81ec48a4592dc3d136",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "706460825859-6umn6qr2ufj57ditf8mudcvpqq64skp1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.android.application",
+            "certificate_hash": "8453a0f94f2a0a0238d7ebe503ef487520319b92"
+          }
+        },
+        {
+          "client_id": "706460825859-hmdi0chj36eb8q39cph411baqlgs4u9v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9TRI3JCRnGMHz2EMK5RpjcS9pROM2l3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "706460825859-hmdi0chj36eb8q39cph411baqlgs4u9v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
