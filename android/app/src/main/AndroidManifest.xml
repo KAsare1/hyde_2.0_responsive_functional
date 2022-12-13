@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.hyde_functional_responsive">
+    package="com.android.application">
    <application
         android:label="hyde_functional_responsive"
         android:name="${applicationName}"

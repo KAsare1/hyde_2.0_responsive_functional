@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hyde_functional_responsive/pages/cart.dart';
 import 'package:hyde_functional_responsive/sidepages/drawer.dart';
 import 'package:hyde_functional_responsive/cards/category.dart';
 
@@ -24,7 +25,9 @@ class _HomeState extends State<Home> {
         elevation: 0.0,
         actions: [
           IconButton(onPressed: (){}, icon: Icon(Icons.search)),
-          IconButton(onPressed: (){}, icon: Icon(Icons.shopping_cart))
+          IconButton(onPressed: (){
+            Navigator.push(context, MaterialPageRoute(builder: (context) => const Cart()));
+          }, icon: const Icon(Icons.shopping_cart))
         ],
         iconTheme: const IconThemeData(),
       ),
@@ -33,22 +36,15 @@ class _HomeState extends State<Home> {
         child: SingleChildScrollView(
           child: Column(
               children: [
-                Container(
-                  margin: const EdgeInsets.fromLTRB(30, 0, 30, 0),
-                  decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(10)
-                  ),
-                ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Container(
-                      margin: const EdgeInsets.only(left: 23, bottom: 0),
+                      margin: const EdgeInsets.only(left: 23, bottom: 90, top: 0),
                       child: const SizedBox(
                         width: 150,
-                        height: 30,
+                        height: 25,
                         child: Text('Good afternoon',
                           style: TextStyle(
                             fontSize: 25,
@@ -60,26 +56,32 @@ class _HomeState extends State<Home> {
                     ),
                   ],
                 ),
-                Container(
-                  margin: EdgeInsets.only(top: 0),
-                  height: 160,
-                  alignment: Alignment.topLeft,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      const SizedBox(width: 20,),
-                      Category('assets/food.jpg'),
-                      const SizedBox(width: 15,),
-                      Category('assets/clothes.jpg'),
-                      const SizedBox(width: 15,),
-                      Category('assets/devices.jpeg'),
-                      const SizedBox(width: 15,),
-                      Category('assets/Beauty.jpg'),
-                      const SizedBox(width: 15,),
-                      Category('assets/partner-image.jpg'),
-                      const SizedBox(width: 10,),
-                    ],
-                  ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(top: 0),
+                      height: 160,
+                      alignment: Alignment.topLeft,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          const SizedBox(width: 20,),
+                          Category('assets/food.jpg'),
+                          const SizedBox(width: 15,),
+                          Category('assets/clothes.jpg'),
+                          const SizedBox(width: 15,),
+                          Category('assets/devices.jpeg'),
+                          const SizedBox(width: 15,),
+                          Category('assets/Beauty.jpg'),
+                          const SizedBox(width: 15,),
+                          Category('assets/partner-image.jpg'),
+                          const SizedBox(width: 10,),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
                 SizedBox(height: 20,),
                 SizedBox(

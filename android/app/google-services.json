@@ -1,41 +1,41 @@
 {
   "project_info": {
-    "project_number": "706460825859",
-    "project_id": "hyde-e3ccc",
-    "storage_bucket": "hyde-e3ccc.appspot.com"
+    "project_number": "225711974459",
+    "project_id": "hyde-1d0d7",
+    "storage_bucket": "hyde-1d0d7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:706460825859:android:57cc81ec48a4592dc3d136",
+        "mobilesdk_app_id": "1:225711974459:android:8f5122acab9f9cb8d9d41e",
         "android_client_info": {
-          "package_name": "com.android.application"
+          "package_name": "com.kofi.app"
         }
       },
       "oauth_client": [
         {
-          "client_id": "706460825859-6umn6qr2ufj57ditf8mudcvpqq64skp1.apps.googleusercontent.com",
+          "client_id": "225711974459-kf8eh322r7kuma13lfv68aqvh7ulaoq1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.android.application",
+            "package_name": "com.kofi.app",
             "certificate_hash": "8453a0f94f2a0a0238d7ebe503ef487520319b92"
           }
         },
         {
-          "client_id": "706460825859-hmdi0chj36eb8q39cph411baqlgs4u9v.apps.googleusercontent.com",
+          "client_id": "225711974459-gq9cd94jp83bto67e9movquhevrqmpe3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD9TRI3JCRnGMHz2EMK5RpjcS9pROM2l3A"
+          "current_key": "AIzaSyB5d7qL1csT4Y1BsLzD8pzxJOr8wL7fAw0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "706460825859-hmdi0chj36eb8q39cph411baqlgs4u9v.apps.googleusercontent.com",
+              "client_id": "225711974459-gq9cd94jp83bto67e9movquhevrqmpe3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

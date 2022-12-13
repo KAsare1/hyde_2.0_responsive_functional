@@ -1,26 +1,28 @@
-import 'dart:html';
-
-import 'package:flutter/material.dart';
-import 'package:hyde_functional_responsive/first%20page/register.dart';
-import 'package:hyde_functional_responsive/pages/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:hyde_functional_responsive/first%20page/forgotpassword.dart';
+import 'package:hyde_functional_responsive/first%20page/register.dart';
 
-
-
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class AnonyLog extends StatefulWidget {
+  const AnonyLog({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<AnonyLog> createState() => _AnonyLogState();
 }
 
-class _LoginState extends State<Login> {
+class _AnonyLogState extends State<AnonyLog> {
+  final _emailcontroller = TextEditingController();
+  final _passwordcontroller = TextEditingController();
+  Future _SignIn() async{
+    await FirebaseAuth.instance.signInWithEmailAndPassword(email: _emailcontroller.text.trim(), password: _passwordcontroller.text.trim());
+  }
+
   @override
+  void dispose(){
+    _emailcontroller.dispose();
+    _passwordcontroller.dispose();
+    super.dispose();
+}
 
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -42,10 +44,11 @@ class _LoginState extends State<Login> {
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(10)
               ),
-              child: const TextField(
+              child: TextField(
+                controller: _emailcontroller,
                 cursorColor: Colors.white,
                 cursorHeight: 25,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelStyle: TextStyle(color: Colors.white),
                   border: OutlineInputBorder(borderSide: BorderSide.none),
                   labelText: 'Username',
@@ -61,19 +64,27 @@ class _LoginState extends State<Login> {
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(10)
               ),
-              child: const TextField(
+              child: TextField(
+                controller: _passwordcontroller,
                 cursorColor: Colors.white,
                 cursorHeight: 25,
                 obscureText: true,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelStyle: TextStyle(color: Colors.white),
                   border: OutlineInputBorder(borderSide: BorderSide.none),
                   labelText: 'Password',
                 ),
               ),
             ),
-            const SizedBox(height: 20,),
-
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(child: TextButton(onPressed: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const Forgotpass()));
+                }, child: const Text('Forgot Password?')),),
+              ],
+            ),
+            const SizedBox(height: 5,),
             SizedBox(
                 height: 51,
                 width: 160,
@@ -96,11 +107,7 @@ class _LoginState extends State<Login> {
                                 padding: const EdgeInsets.all(10.0),
                                 textStyle: const TextStyle(fontSize: 30),
                               ),
-                              onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context){
-                                  return const Home(title: 'home');
-                                }));
-                              },
+                              onPressed: _SignIn,
                               child: const Text('LOGIN',
                                 style: TextStyle(fontSize: 20,
                                     color: Colors.black,
@@ -113,6 +120,15 @@ class _LoginState extends State<Login> {
                     )
                 )
             ),
+            SizedBox(height: 5,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text("Don't have an account?", style: TextStyle(color: Colors.white70),),
+                TextButton(onPressed:(){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> const Register(title: 'register')),);
+                }, child: const Text("Register", style: TextStyle(color: Colors.blue),))
+              ],),
 
           ],
         ),

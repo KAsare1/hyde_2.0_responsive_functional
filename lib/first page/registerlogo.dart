@@ -57,7 +57,7 @@ class _FirstregState extends State<Firstreg> {
                     ),
                     onPressed: (){
                       Navigator.push(context, MaterialPageRoute(builder: (context){
-                        return const Register(title: 'Register');
+                        return const Register(title: 'Register',);
                       }));
                     },
                       child: const Text('GET STARTED', style: TextStyle(fontSize: 20, color: Colors.black), textAlign: TextAlign.center,),

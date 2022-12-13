@@ -13,8 +13,15 @@ class ProductDetails extends StatefulWidget {
 }
 
 class _ProductDetailsState extends State<ProductDetails> {
-  @override
   int counter = 0;
+  void increseqty(){
+    counter = counter + 1;
+  }
+
+  void decreaseqty(){
+    counter = counter - 1;
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
@@ -38,8 +45,8 @@ class _ProductDetailsState extends State<ProductDetails> {
               const SizedBox(height: 30, child: Text('Description'),),
               const SizedBox(height: 10,),
               SizedBox(
-                height: 63,
-                width: 250,
+                height: 58,
+                width: 255,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Stack(
@@ -54,19 +61,21 @@ class _ProductDetailsState extends State<ProductDetails> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          ButtonBar(
-                            alignment: MainAxisAlignment.center,
-                            children: [
-                              IconButton(onPressed: (){
-                                counter +=counter;
-                              }, icon: const Icon(Icons.add, size: 40,)),
-                              const SizedBox(width: 45),
-                              Text('$counter', style: const TextStyle(fontSize: 35),),
-                              const SizedBox(width: 43),
-                              IconButton(onPressed: () {counter -=counter;}, icon: const Icon(Icons.remove, size: 43,)),
-                              const SizedBox(width: 5)
-                            ],
+                          const SizedBox(width: 10,),
+                          IconButton(onPressed: (){
+                            setState(() {
+                              increseqty();
+                            });
+                          }, icon: Center(child: const Icon(Icons.add, size: 27,))),
+                          const SizedBox(width: 45),
+                          Center(child: Text('$counter', style: const TextStyle(fontSize: 35),)),
+                          const SizedBox(width: 43),
+                          Center(
+                            child: IconButton(onPressed: () {setState(() {
+                              decreaseqty();
+                            });}, icon: const Icon(Icons.remove, size: 30,)),
                           ),
+                          const SizedBox(width: 5),
                         ],
                       ),
                   ]
@@ -74,19 +83,21 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ),
               ),
               const SizedBox(height: 50),
-              Row(
-                children:const [
-                  SizedBox(width: 12,),
-                  FilledCardExample(),
-                  SizedBox(width: 12,),
-                  OutlinedCardExample()
-              ]),
+              SingleChildScrollView(
+                child: Row(
+                  children:const [
+                    SizedBox(width: 10,),
+                    FilledCardExample(),
+                    SizedBox(width: 10,),
+                    OutlinedCardExample(),
+                ]),
+              ),
               const SizedBox(height: 50,),
               Row(
                 children: [
                   const SizedBox(width: 12,),
                   SizedBox(
-                      height: 51,
+                      height: 60,
                       width: 310,
                       child:      ClipRRect(
                           borderRadius: BorderRadius.circular(12),
@@ -104,12 +115,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                                   child: TextButton(
                                     style:
                                     TextButton.styleFrom(
-                                      padding: const EdgeInsets.only(right: 120, left: 120),
+                                      padding: const EdgeInsets.only(right: 120, left: 110),
                                       textStyle: const TextStyle(fontSize: 30),
                                     ),
                                     onPressed: () {},
                                     child: const Text('ORDER',
-                                      style: TextStyle(fontSize: 17,
+                                      style: TextStyle(fontSize: 20,
                                           color: Colors.black,
                                           fontWeight: FontWeight.bold),
                                       textAlign: TextAlign.center,
@@ -120,9 +131,9 @@ class _ProductDetailsState extends State<ProductDetails> {
                           )
                       )
                   ),
-                  SizedBox(width: 15,),
+                  SizedBox(width: 10,),
                   SizedBox(
-                      height: 51,
+                      height: 60,
                       width: 50,
                       child:      ClipRRect(
                           borderRadius: BorderRadius.circular(12),
@@ -138,7 +149,7 @@ class _ProductDetailsState extends State<ProductDetails> {
                                 ),
                                 Center(
                                   child: IconButton(
-                                    icon: Icon(Icons.shopping_cart),
+                                    icon: Icon(Icons.shopping_cart_outlined),
                                     style:
                                     TextButton.styleFrom(
                                       padding: const EdgeInsets.all(10.0),
@@ -200,9 +211,9 @@ class OutlinedCardExample extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(12)),
         ),
         child: SizedBox(
-          width: 180,
+          width: 150,
           height: 200,
-          child: Center(child: Text('Outlined Card')),
+          child: Center(child: Text('Price Card')),
         ),
       ),
     );

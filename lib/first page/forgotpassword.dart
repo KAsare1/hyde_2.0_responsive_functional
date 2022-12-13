@@ -1,27 +1,47 @@
-import 'dart:html';
-
-import 'package:flutter/material.dart';
-import 'package:hyde_functional_responsive/first%20page/register.dart';
-import 'package:hyde_functional_responsive/pages/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:fluttertoast/fluttertoast.dart';
-import 'package:google_sign_in/google_sign_in.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 
 
-
-class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+class Forgotpass extends StatefulWidget {
+  const Forgotpass({Key? key}) : super(key: key);
 
   @override
-  State<Login> createState() => _LoginState();
+  State<Forgotpass> createState() => _ForgotpassState();
 }
 
-class _LoginState extends State<Login> {
-  @override
+class _ForgotpassState extends State<Forgotpass> {
+  final _emailController = TextEditingController();
 
+
+  @override
+  void dispose(){
+  _emailController.dispose();
+  super.dispose();
+  }
+
+  Future Passwordreset() async{
+    try{
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: _emailController.text.trim());
+      showDialog(context: context, builder: (context)
+      {
+        return const AlertDialog(
+          content: Text("havcbibasjkn"),
+        );
+      }
+      );
+    }on FirebaseAuthException catch(e){
+      print(e);
+      showDialog(context: context, builder: (context)
+      {
+        return AlertDialog(
+        content: Text(e.message.toString()),
+      );
+      }
+      );
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -38,19 +58,7 @@ class _LoginState extends State<Login> {
             const SizedBox(height: 20,),
             Container(
               margin: const EdgeInsets.fromLTRB(30, 2, 30, 10),
-              decoration: BoxDecoration(
-                  color: Colors.grey,
-                  borderRadius: BorderRadius.circular(10)
-              ),
-              child: const TextField(
-                cursorColor: Colors.white,
-                cursorHeight: 25,
-                decoration: InputDecoration(
-                  labelStyle: TextStyle(color: Colors.white),
-                  border: OutlineInputBorder(borderSide: BorderSide.none),
-                  labelText: 'Username',
-                ),
-              ),
+              child: const Text("Enter your E-mail Address to receive a password reset link", style: TextStyle(fontSize: 25, color: Colors.white60),),
             ),
 
             const SizedBox(height: 20,),
@@ -61,14 +69,14 @@ class _LoginState extends State<Login> {
                   color: Colors.grey,
                   borderRadius: BorderRadius.circular(10)
               ),
-              child: const TextField(
+              child: TextField(
+                controller: _emailController,
                 cursorColor: Colors.white,
                 cursorHeight: 25,
-                obscureText: true,
-                decoration: InputDecoration(
+                obscureText: false,
+                decoration: const InputDecoration(
                   labelStyle: TextStyle(color: Colors.white),
                   border: OutlineInputBorder(borderSide: BorderSide.none),
-                  labelText: 'Password',
                 ),
               ),
             ),
@@ -76,7 +84,7 @@ class _LoginState extends State<Login> {
 
             SizedBox(
                 height: 51,
-                width: 160,
+                width: 180,
                 child:      ClipRRect(
                     borderRadius: BorderRadius.circular(20),
 
@@ -96,13 +104,9 @@ class _LoginState extends State<Login> {
                                 padding: const EdgeInsets.all(10.0),
                                 textStyle: const TextStyle(fontSize: 30),
                               ),
-                              onPressed: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context){
-                                  return const Home(title: 'home');
-                                }));
-                              },
-                              child: const Text('LOGIN',
-                                style: TextStyle(fontSize: 20,
+                              onPressed: Passwordreset,
+                              child: const Text('RESET PASSWORD',
+                                style: TextStyle(fontSize: 15,
                                     color: Colors.black,
                                     fontWeight: FontWeight.bold),
                                 textAlign: TextAlign.center,
